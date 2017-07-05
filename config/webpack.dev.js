@@ -14,6 +14,7 @@ module.exports = {
 
   output: {
     path: helpers.root('dist'),
+    publicPath: 'assets/',
     filename: '[name].js'
   },
 
