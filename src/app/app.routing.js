@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NotFoundComponent } from './components';
+import { HomePage, FourOhFourPage } from './pages';
 
 const Routes = [
-  { path: '**', component: NotFoundComponent, pathMatch: 'full' }
+  { path: '', component: HomePage},
+  { path: '**', component: FourOhFourPage, pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -4,11 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app.routing.js';
-import { MainComponent, Components } from './components';
+import { MainPage } from './main/main.page';
+import { Pages} from './pages';
+import { Components } from './components';
 
 @NgModule({
   declarations: [
-    ...Components
+    MainPage,
+    ...Pages,
+    ...Components,
   ],
   imports: [
     // Angular 2 related modules
@@ -21,7 +25,7 @@ import { MainComponent, Components } from './components';
     AppRoutingModule,
   ],
     bootstrap: [
-    MainComponent
+    MainPage
   ]
 })
 export class AppModule { }

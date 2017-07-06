@@ -7,6 +7,14 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 require('mahrio').runServer(process.env, __dirname ).then( function( server ) {
-  //OTHER APIS
+
   require('./routes')( server, 'dist/' );
+
+  server.route({
+    path: '/{any*}',
+    method: 'GET',
+    handler: function(req, rep){
+      rep().redirect('/student/');
+    }
+  });
 });

@@ -1,12 +1,9 @@
-import { MainComponent } from './main/main.component';
-import { NotFoundComponent } from './404/404.component';
+import { TopNavComponent } from './top-navigation/top-navigation.component'
 
 export {
-  MainComponent,
-  NotFoundComponent,
+  TopNavComponent
 };
 
 export const Components = [
-  MainComponent,
-  NotFoundComponent,
+  TopNavComponent
 ];

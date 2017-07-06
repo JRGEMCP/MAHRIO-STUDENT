@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import template from './main.template.html';
+import template from './main.page.html';
 
-import style from '../../stylesheets/main.scss';
+import style from '../stylesheets/main.scss';
 
 @Component({
   selector: 'app',
@@ -11,7 +11,7 @@ import style from '../../stylesheets/main.scss';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class MainComponent {
+export class MainPage {
 
 }
 
