@@ -8,6 +8,7 @@ if (process.env.NODE_ENV === 'development') {
 
 require('mahrio').runServer(process.env, __dirname ).then( function( server ) {
 
+  require('mahrio-header/server/routes/')( server, 'node_modules/mahrio-header/dist/');
   require('./routes')( server, 'dist/' );
 
   server.route({
