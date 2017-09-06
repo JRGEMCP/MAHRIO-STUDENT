@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HomePage, FourOhFourPage } from './pages';
+import {
+  ListMyTutorialsComponent,
+  CreateMyTutorialComponent,
+  RealTimeClassmatesComponent } from './pages';
 
 const Routes = [
-  { path: '', component: HomePage},
-  { path: '**', component: FourOhFourPage, pathMatch: 'full' }
+  { path: '', pathMatch: 'full', redirectTo: 'my-tutorials'},
+  { path: 'my-tutorials', component: ListMyTutorialsComponent},
+  { path: 'my-tutorials/new', component: CreateMyTutorialComponent},
+  { path: 'my-classmates', component: RealTimeClassmatesComponent},
+  { path: '**', pathMatch: 'full', redirectTo: 'my-tutorials' }
 ];
 
 @NgModule({

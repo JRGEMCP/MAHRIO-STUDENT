@@ -1,12 +1,15 @@
-import { HomePage } from './home/home.page';
-import { FourOhFourPage } from './404/404.page';
+import { ListMyTutorialsComponent } from './tutorials-list-mine/list-my-tutorials.component';
+import { CreateMyTutorialComponent } from './tutorials-create-mine/create-my-tutorial.component';
+import { RealTimeClassmatesComponent } from './classmates-real-time/real-time-classmates.component';
 
 export {
-  HomePage,
-  FourOhFourPage,
+  ListMyTutorialsComponent,
+  CreateMyTutorialComponent,
+  RealTimeClassmatesComponent,
 };
 
 export const Pages = [
-  HomePage,
-  FourOhFourPage,
+  ListMyTutorialsComponent,
+  CreateMyTutorialComponent,
+  RealTimeClassmatesComponent,
 ];

@@ -1,0 +1,31 @@
+.real-time-chat {
+  height: 100vh;
+  position: relative;
+  .real-time-chat-messages {
+    height: calc(100% - 56px);
+    margin-top: -112px;
+    div.col-md-12 {
+      height: 100%;
+      padding-top: -112px;
+      ul.media-list {
+        padding: 0;
+        height: calc(100% - 112px);
+        overflow: auto;
+        margin-top: 112px;
+        .media {
+          a.pull-left {
+            margin: 0 15px;
+            img {
+              border-radius: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .real-time-chat-form {
+    .panel-footer {
+      padding: 9px 0;
+    }
+  }
+}

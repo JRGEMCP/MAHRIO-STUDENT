@@ -1,0 +1,14 @@
+<search-sub-nav></search-sub-nav>
+
+<div class="container mt-3">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let article of articles">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{article.title}}</h5>
+                <small>{{article.created}}</small>
+            </div>
+            <p class="mb-1">{{article.deck}}</p>
+            <small>Donec id elit non mi porta.</small>
+        </a>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 module.exports = function( server, publicPath ) {
   server.route({
-    path: '/student/assets/{any*}',
+    path: '/dashboard/assets/{any*}',
     method: 'GET',
     handler: {
       directory: {
@@ -8,9 +8,8 @@ module.exports = function( server, publicPath ) {
       }
     }
   });
-
   server.route({
-    path: '/student/{any*}',
+    path: '/dashboard/{any*}',
     method: 'GET',
     handler: function( req, rep ) {
 
