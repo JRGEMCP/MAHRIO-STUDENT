@@ -1,14 +1,24 @@
-<search-sub-nav></search-sub-nav>
+<search-sub-nav *ngIf="loaded && !notutorials"></search-sub-nav>
 
 <div class="container mt-3">
+    <div *ngIf="notutorials">
+        <h5>Welcome to your Tutorials!</h5>
+        <p>This is where you'll find the tutorials that you can contribute to...but it looks like you don't have any, yet</p>
+        <a class="btn btn-primary" [routerLink]="['new']">Create your first Tutorial</a>
+    </div>
     <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let article of articles">
+        <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let article of articles">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{article.title}}</h5>
-                <small>{{article.created}}</small>
+                <div>
+                    <h5 class="mb-1">{{article.title}}</h5>
+                    <p class="mb-1">{{article.deck}}</p>
+                    <small>{{article.created}}</small>
+                </div>
+                <div>
+                    <a [routerLink]="[article._id, 'edit']" (click)="articlesService.currentArticle = article">Edit</a>
+                </div>
             </div>
-            <p class="mb-1">{{article.deck}}</p>
-            <small>Donec id elit non mi porta.</small>
-        </a>
+
+        </div>
     </div>
 </div>

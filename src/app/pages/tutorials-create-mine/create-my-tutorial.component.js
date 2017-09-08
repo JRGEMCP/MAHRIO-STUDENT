@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SessionService, ArticleService } from '../../services';
+import { ArticleService } from 'mahrio-header/src/services';
 
 import template from './create-my-tutorial.template.html';
 
@@ -11,22 +11,15 @@ import template from './create-my-tutorial.template.html';
 
 export class CreateMyTutorialComponent {
   static get parameters(){
-    return [Router, ArticleService, SessionService];
+    return [Router, ArticleService];
   }
-  constructor( router, article, session ){
+  constructor( router, article){
     this.router = router;
-    this.article = article;
-    this.session = session;
+    this.articleService = article;
     this.a = {};
   }
-  ngOnInit(){
-    this.session.token.subscribe( token => {
-      console.log('i got the token'+token);
-      this.article.setToken( token );
-    })
-  }
   save(){
-    this.article.post(this.a).then( res => {
+    this.articleService.post(this.a).then( res => {
       this.router.navigate(['/','dashboard']);
     }, err => {
       this.err = true;

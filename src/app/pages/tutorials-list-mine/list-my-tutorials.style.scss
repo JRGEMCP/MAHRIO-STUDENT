@@ -1,0 +1,10 @@
+.list-group-item-action {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 0;
+  &:focus, &:hover {
+    background: none;
+  }
+}
+

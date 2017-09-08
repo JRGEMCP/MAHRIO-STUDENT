@@ -1,11 +1,14 @@
 import { Component } from "@angular/core";
 import { ArticleService } from 'mahrio-header/src/services';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/mergeMap';
 import template from './list-my-tutorials.template.html';
+import style from './list-my-tutorials.style.scss';
 
 @Component({
   selector: 'list-my-tutorials',
-  template
+  template,
+  styles: [style]
 })
 
 export class ListMyTutorialsComponent {
@@ -18,9 +21,21 @@ export class ListMyTutorialsComponent {
   }
 
   ngOnInit() {
-    this.articlesService.gett().then( res=> {
-      this.articles = res.articles;
-      console.log( this.articles);
-    })
+    this._subs = this.articlesService.token
+      .flatMap( token => this.articlesService.gett(null, true) )
+      .catch( () => { console.log('catcheeed') })
+      .subscribe( res => {
+        if(!res.articles.length){
+          this.notutorials = true;
+        } else {
+          this.articles = res.articles;
+        }
+        this.loaded = true;
+      });
+  }
+  ngOnDestroy(){
+    if(this._subs) {
+      this._subs.unsubscribe();
+    }
   }
 }
