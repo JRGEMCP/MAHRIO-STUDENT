@@ -4,9 +4,11 @@ import template from './milestone-panel.template.html';
 
 @Component({
   selector: 'milestone-panel',
-  template
+  template,
+  inputs: ['active', 'id']
 })
 
 export class MilestonePanelComponent {
+
 
 }

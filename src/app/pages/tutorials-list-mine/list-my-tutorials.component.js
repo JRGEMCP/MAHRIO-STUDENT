@@ -8,7 +8,8 @@ import style from './list-my-tutorials.style.scss';
 @Component({
   selector: 'list-my-tutorials',
   template,
-  styles: [style]
+  styles: [style],
+  inputs: ['id']
 })
 
 export class ListMyTutorialsComponent {
