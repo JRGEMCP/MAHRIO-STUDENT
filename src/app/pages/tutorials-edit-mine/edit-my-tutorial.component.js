@@ -24,11 +24,12 @@ export class EditMyTutorialComponent {
     if( !this.a ) {
       this.a = {};
       this._subs = this.articleService.token
-           .flatMap( token => this.articleService.gett(this.route.params.value.id, true) )
-           .catch( () => { console.log('catcheeed') })
-           .subscribe( res => {
-               console.log( res );
-           });
+        .flatMap( token => this.articleService.gett(null, true, this.route.params.value.id) )
+        .catch( () => { console.log('catcheeed') })
+        .subscribe( res => {
+          this.a = res.articles[0] || {};
+          this.articleService.currentArticle = this.a;
+         });
     }
   }
   ngOnDestroy(){

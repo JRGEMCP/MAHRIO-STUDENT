@@ -58724,12 +58724,12 @@ var ArticleService = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__
     this.article;
   }
 
-  ArticleService.prototype.gett = function gett(link, auth) {
+  ArticleService.prototype.gett = function gett(link, auth, id) {
     var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({});
     if (this._token && auth) {
       options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Headers */]({ 'Authorization': this._token }) });
     }
-    return this.http.get('/api/articles' + (link ? '/' + link : ''), options).map(function (res) {
+    return this.http.get('/api/articles' + (link ? '/' + link : '') + (!link && id ? '?id=' + id : ''), options).map(function (res) {
       return res.json();
     }).catch(this.handleError);
   };
@@ -90051,16 +90051,29 @@ var DefineMyTutorialComponent = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED
   }
 
   DefineMyTutorialComponent.prototype.ngOnInit = function ngOnInit() {
+    var _this = this;
+
     this.a = this.articleService.currentArticle;
+    if (!this.a) {
+      this.a = {};
+      this._subs = this.articleService.token.flatMap(function (token) {
+        return _this.articleService.gett(null, true, _this.route.params.value.id);
+      }).catch(function () {
+        console.log('catcheeed');
+      }).subscribe(function (res) {
+        _this.a = res.articles[0] || {};
+        _this.articleService.currentArticle = _this.a;
+      });
+    }
   };
 
   DefineMyTutorialComponent.prototype.save = function save() {
-    var _this = this;
+    var _this2 = this;
 
     this.articleService.put(this.a).then(function (res) {
-      _this.router.navigate(['/', 'dashboard']);
+      _this2.router.navigate(['/', 'dashboard']);
     }, function (err) {
-      _this.err = true;
+      _this2.err = true;
     });
   };
 
@@ -90111,16 +90124,29 @@ var DeployMyTutorialComponent = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED
   }
 
   DeployMyTutorialComponent.prototype.ngOnInit = function ngOnInit() {
+    var _this = this;
+
     this.a = this.articleService.currentArticle;
+    if (!this.a) {
+      this.a = {};
+      this._subs = this.articleService.token.flatMap(function (token) {
+        return _this.articleService.gett(null, true, _this.route.params.value.id);
+      }).catch(function () {
+        console.log('catcheeed');
+      }).subscribe(function (res) {
+        _this.a = res.articles[0] || {};
+        _this.articleService.currentArticle = _this.a;
+      });
+    }
   };
 
   DeployMyTutorialComponent.prototype.save = function save() {
-    var _this = this;
+    var _this2 = this;
 
     this.articleService.put(this.a).then(function (res) {
-      _this.router.navigate(['/', 'dashboard']);
+      _this2.router.navigate(['/', 'dashboard']);
     }, function (err) {
-      _this.err = true;
+      _this2.err = true;
     });
   };
 
@@ -90171,16 +90197,29 @@ var DesignMyTutorialComponent = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED
   }
 
   DesignMyTutorialComponent.prototype.ngOnInit = function ngOnInit() {
+    var _this = this;
+
     this.a = this.articleService.currentArticle;
+    if (!this.a) {
+      this.a = {};
+      this._subs = this.articleService.token.flatMap(function (token) {
+        return _this.articleService.gett(null, true, _this.route.params.value.id);
+      }).catch(function () {
+        console.log('catcheeed');
+      }).subscribe(function (res) {
+        _this.a = res.articles[0] || {};
+        _this.articleService.currentArticle = _this.a;
+      });
+    }
   };
 
   DesignMyTutorialComponent.prototype.save = function save() {
-    var _this = this;
+    var _this2 = this;
 
     this.articleService.put(this.a).then(function (res) {
-      _this.router.navigate(['/', 'dashboard']);
+      _this2.router.navigate(['/', 'dashboard']);
     }, function (err) {
-      _this.err = true;
+      _this2.err = true;
     });
   };
 
@@ -90231,16 +90270,29 @@ var DevelopMyTutorialComponent = (_dec = __webpack_require__.i(__WEBPACK_IMPORTE
   }
 
   DevelopMyTutorialComponent.prototype.ngOnInit = function ngOnInit() {
+    var _this = this;
+
     this.a = this.articleService.currentArticle;
+    if (!this.a) {
+      this.a = {};
+      this._subs = this.articleService.token.flatMap(function (token) {
+        return _this.articleService.gett(null, true, _this.route.params.value.id);
+      }).catch(function () {
+        console.log('catcheeed');
+      }).subscribe(function (res) {
+        _this.a = res.articles[0] || {};
+        _this.articleService.currentArticle = _this.a;
+      });
+    }
   };
 
   DevelopMyTutorialComponent.prototype.save = function save() {
-    var _this = this;
+    var _this2 = this;
 
     this.articleService.put(this.a).then(function (res) {
-      _this.router.navigate(['/', 'dashboard']);
+      _this2.router.navigate(['/', 'dashboard']);
     }, function (err) {
-      _this.err = true;
+      _this2.err = true;
     });
   };
 
@@ -90297,11 +90349,12 @@ var EditMyTutorialComponent = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_M
     if (!this.a) {
       this.a = {};
       this._subs = this.articleService.token.flatMap(function (token) {
-        return _this.articleService.gett(_this.route.params.value.id, true);
+        return _this.articleService.gett(null, true, _this.route.params.value.id);
       }).catch(function () {
         console.log('catcheeed');
       }).subscribe(function (res) {
-        console.log(res);
+        _this.a = res.articles[0] || {};
+        _this.articleService.currentArticle = _this.a;
       });
     }
   };
@@ -90687,7 +90740,7 @@ module.exports = "<div class=\"container mt-3\">\n    <div class=\"row\">\n     
 /* 799 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container mt-3\">\n    <div class=\"row\">\n        <div class=\"col-md-4\">\n            <milestone-panel [id]=\"a._id\"></milestone-panel>\n        </div>\n        <div class=\"col-md-4\">\n            <h5></h5>\n            <h3>Discover</h3>\n            <h5>Tutorial Identification</h5>\n            <p>In this section you supply information that identifies and describes your Tutorial.</p>\n            <div class=\"form\">\n                <div class=\"form-group\">\n                    <label for=\"title\">Title</label>\n                    <input type=\"text\" class=\"form-control\" id=\"title\" placeholder=\"Title\" [(ngModel)]=\"a.title\">\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"link\">URL Path</label>\n                    <input type=\"text\" class=\"form-control\" id=\"link\" placeholder=\"URL Path\" [(ngModel)]=\"a.link\">\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"summary\">Summary</label>\n                    <textarea class=\"form-control\" id=\"summary\" rows=\"3\" placeholder=\"Summary\" [(ngModel)]=\"a.deck\"></textarea>\n                </div>\n            </div>\n            <button class=\"btn btn-success\" (click)=\"save(); saving = true;\">\n                <ng-container *ngIf=\"!saving\">Save</ng-container>\n                <ng-container *ngIf=\"saving\">Saving</ng-container>\n            </button>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container mt-3\">\n    <div class=\"row\">\n        <div class=\"col-md-4\">\n            <milestone-panel [id]=\"a._id\"></milestone-panel>\n        </div>\n        <div class=\"col-md-4\">\n            <h3>Discover</h3>\n            <h5>Tutorial Identification</h5>\n            <p>In this section you supply information that identifies and describes your Tutorial.</p>\n            <div class=\"form\">\n                <div class=\"form-group\">\n                    <label for=\"title\">Title</label>\n                    <input type=\"text\" class=\"form-control\" id=\"title\" placeholder=\"Title\" [(ngModel)]=\"a.title\">\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"link\">URL Path</label>\n                    <input type=\"text\" class=\"form-control\" id=\"link\" placeholder=\"URL Path\" [(ngModel)]=\"a.link\">\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"summary\">Summary</label>\n                    <textarea class=\"form-control\" id=\"summary\" rows=\"3\" placeholder=\"Summary\" [(ngModel)]=\"a.deck\"></textarea>\n                </div>\n            </div>\n            <button class=\"btn btn-success\" (click)=\"save(); saving = true;\">\n                <ng-container *ngIf=\"!saving\">Save</ng-container>\n                <ng-container *ngIf=\"saving\">Saving</ng-container>\n            </button>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 800 */
