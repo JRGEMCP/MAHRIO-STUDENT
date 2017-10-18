@@ -1,15 +1,15 @@
 import { TopNavComponent } from './top-navigation/top-navigation.component';
-import { SearchSubNavComponent } from './search-sub-nav/search-sub-nav.component';
+import { CreateTutorialComponent } from './create-tutorial/create-tutorial.component';
 import { MilestonePanelComponent } from './milestone-panel/milestone-panel.component';
 
 export {
   TopNavComponent,
-  SearchSubNavComponent,
+  CreateTutorialComponent,
   MilestonePanelComponent,
 };
 
 export const Components = [
   TopNavComponent,
-  SearchSubNavComponent,
+  CreateTutorialComponent,
   MilestonePanelComponent,
 ];

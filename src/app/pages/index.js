@@ -6,6 +6,7 @@ import { DesignMyTutorialComponent } from './tutorials-design-mine/design-my-tut
 import { DevelopMyTutorialComponent } from './tutorials-develop-mine/develop-my-tutorial.component';
 import { DeployMyTutorialComponent } from './tutorials-deploy-mine/deploy-my-tutorial.component';
 import { RealTimeClassmatesComponent } from './classmates-real-time/real-time-classmates.component';
+import { GithubTokenFetchComponent } from './github-token-fetch/github-token-fetch.component';
 
 export {
   ListMyTutorialsComponent,
@@ -16,6 +17,7 @@ export {
   DevelopMyTutorialComponent,
   DeployMyTutorialComponent,
   RealTimeClassmatesComponent,
+  GithubTokenFetchComponent
 };
 
 export const Pages = [
@@ -27,4 +29,5 @@ export const Pages = [
   DevelopMyTutorialComponent,
   DeployMyTutorialComponent,
   RealTimeClassmatesComponent,
+  GithubTokenFetchComponent
 ];

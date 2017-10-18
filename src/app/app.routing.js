@@ -8,10 +8,12 @@ import {
   DesignMyTutorialComponent,
   DevelopMyTutorialComponent,
   DeployMyTutorialComponent,
-  RealTimeClassmatesComponent } from './pages';
+  RealTimeClassmatesComponent,
+  GithubTokenFetchComponent} from './pages';
 
 const Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'my-tutorials'},
+  { path: 'github/:token', component: GithubTokenFetchComponent },
   { path: 'my-tutorials', component: ListMyTutorialsComponent},
   { path: 'my-tutorials/new', component: CreateMyTutorialComponent},
   { path: 'my-tutorials/:id/edit', component: EditMyTutorialComponent},

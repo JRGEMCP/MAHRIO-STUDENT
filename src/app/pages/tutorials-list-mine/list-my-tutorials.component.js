@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { ArticleService } from 'mahrio-header/src/services';
+import { ArticleService, OauthSessionService, PaginationService } from 'mahrio-header/src/services';
+import { Article, FilterModel, NoFilter, SearchByNameFilter } from 'mahrio-header/src/models';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 import template from './list-my-tutorials.template.html';
@@ -14,10 +15,13 @@ import style from './list-my-tutorials.style.scss';
 
 export class ListMyTutorialsComponent {
   static get parameters(){
-    return [ArticleService];
+    return [ArticleService, OauthSessionService, PaginationService];
   }
-  constructor ( articles ){
+  constructor ( articles, oauth, paging ){
     this.articlesService = articles;
+    this.oauthService = oauth;
+    this.pagingService = paging;
+    this.filters = [ new NoFilter() ];
     this.articles = [];
   }
 
@@ -26,6 +30,11 @@ export class ListMyTutorialsComponent {
       .flatMap( token => this.articlesService.gett(null, true) )
       .catch( () => { console.log('catcheeed') })
       .subscribe( res => {
+        res.articles.forEach( (article, i) => {
+          this.articles.push( Article.fromPayload(article) );
+        });
+        this.applyFilters();
+
         if(!res.articles.length){
           this.notutorials = true;
         } else {
@@ -37,6 +46,37 @@ export class ListMyTutorialsComponent {
   ngOnDestroy(){
     if(this._subs) {
       this._subs.unsubscribe();
+    }
+  }
+  applyFilters(){
+    let apis = [];
+    this.filters.forEach( (filterModel) => {
+      if( filterModel.isAnd ){
+        apis = this.articles.filter(filterModel.filter);
+      }
+    });
+
+    this.pagingService.items = apis;
+    this.pagingService.setPage(0);
+  }
+
+  // PAGINATION
+  change($event){
+    switch($event.type){
+      case 'first':
+        this.pagingService.first();
+        break;
+      case 'prev':
+        this.pagingService.prev();
+        break;
+      case 'next':
+        this.pagingService.next();
+        break;
+      case 'last':
+        this.pagingService.last();
+        break;
+      case 'page':
+        this.pagingService.setPage( $event.num );
     }
   }
 }
