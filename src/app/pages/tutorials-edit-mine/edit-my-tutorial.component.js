@@ -38,6 +38,7 @@ export class EditMyTutorialComponent {
     }
   }
   save(){
+    console.log( this.a );
     this.articleService.put(this.a).then( res => {
       this.router.navigate(['/','dashboard']);
     }, err => {
