@@ -1,0 +1,8 @@
+ul {
+  list-style: none;
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+    font-weight: bold;
+  }
+}

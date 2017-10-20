@@ -1,10 +1,10 @@
 <div>
     <h5>Milestone Panel</h5>
-    <ul class="list-group">
-        <li><a [routerLink]="['/my-tutorials', id, 'edit']">Discover</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'define']">Define</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'design']">Design</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'develop']">Develop</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'deploy']">Deploy</a></li>
+    <ul class="list-group pl-2">
+        <li><a [routerLink]="['/my-tutorials', id, 'edit']" [class.disabled]="active=='discover'">Discover</a></li>
+        <li><a [routerLink]="['/my-tutorials', id, 'define']" [class.disabled]="active=='define'">Define</a></li>
+        <li><a [routerLink]="['/my-tutorials', id, 'design']" [class.disabled]="active=='design'">Design</a></li>
+        <li><a [routerLink]="['/my-tutorials', id, 'develop']" [class.disabled]="active=='develop'">Develop</a></li>
+        <li><a [routerLink]="['/my-tutorials', id, 'deploy']" [class.disabled]="active=='deploy'">Deploy</a></li>
     </ul>
 </div>
