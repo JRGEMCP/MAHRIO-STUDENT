@@ -1,5 +1,8 @@
 # MAHRIO-STUDENT
 Student SPA
+
+Development version: **1.0.0** [![Build Status](https://travis-ci.org/JRGEMCP/MAHRIO-STUDENT.svg?branch=master)](https://travis-ci.org/JRGEMCP/MAHRIO-STUDENT)
+
 ## Get Started
 Download this repo using `git` and install its dependencies using `npm`.
 1. `git clone https://github.com/JRGEMCP/mahrio-student.git`
