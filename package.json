@@ -7,10 +7,11 @@
   },
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run dev",
+    "build": "NODE_ENV='prod' webpack --profile --bail",
     "dev": "NODE_ENV='dev' webpack --watch --profile --bail",
     "prebuild": "npm update",
-    "build": "NODE_ENV='prod' webpack --profile --bail"
+    "start": "npm run dev",
+    "test": "npm run build"
   },
   "license": "MIT",
   "engines": {
@@ -59,6 +60,6 @@
     "webpack": "^2.6.1",
     "mahrio": "https://github.com/JRGEMCP/MAHRIO.git#master",
     "mahrio-header": "https://github.com/JRGEMCP/MAHRIO-HEADER.git#master",
-    "node-env-file": "^0.1.8" 
+    "node-env-file": "^0.1.8"
   }
 }
