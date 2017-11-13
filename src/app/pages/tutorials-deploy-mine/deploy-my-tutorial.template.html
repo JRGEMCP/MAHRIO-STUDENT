@@ -4,24 +4,10 @@
             <milestone-panel [id]="a._id" active="deploy"></milestone-panel>
         </div>
         <div class="col-md-4">
-            <h3>Deploy</h3>
+            <h3>Deploy / Review</h3>
             <h5>Tutorial Publishing</h5>
             <p>In this section you supply information that launches your Tutorial.</p>
-            <div class="form">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="a.title">
-                </div>
-                <div class="form-group">
-                    <label for="link">URL Path</label>
-                    <input type="text" class="form-control" id="link" placeholder="URL Path" [(ngModel)]="a.link">
-                </div>
-                <div class="form-group">
-                    <label for="summary">Summary</label>
-                    <textarea class="form-control" id="summary" rows="3" placeholder="Summary" [(ngModel)]="a.deck"></textarea>
-                </div>
-            </div>
-            <button class="btn btn-success" (click)="save()">Save</button>
+
         </div>
     </div>
 </div>

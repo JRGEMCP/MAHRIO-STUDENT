@@ -33,11 +33,7 @@ export class DevelopMyTutorialComponent {
     }
   }
 
-  save(){
-    this.articleService.put(this.a).then( res => {
-      this.router.navigate(['/','dashboard']);
-    }, err => {
-      this.err = true;
-    });
+  textChanged(){
+    console.log('saving');
   }
 }

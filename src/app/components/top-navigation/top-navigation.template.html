@@ -1,12 +1,15 @@
 <div class="row navbar navbar-toggleable-md bg-faded">
     <div class="container">
-        <div class="collapse navbar-collapse" [ngbCollapse]="!isCollapsed">
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <!--<li class="nav-item">-->
                     <!--<a class="nav-link pl-0" href="/">My Projects</a>-->
                 <!--</li>-->
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['my-tutorials']">My Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-info" (click)="showMedia = !showMedia">Media</button>
                 </li>
                 <!--<li class="nav-item">-->
                     <!--<a class="nav-link" [routerLink]="['my-classmates']">My Classmates</a>-->
@@ -17,4 +20,7 @@
             </ul>
         </div>
     </div>
+</div>
+<div class="media-library" [ngbCollapse]="!showMedia">
+    <mahrio-media></mahrio-media><h1>TE</h1>
 </div>

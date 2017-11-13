@@ -1,3 +1,7 @@
+import { AceEditorModule } from 'ng2-ace-editor';
+
+import { MarkdownModule } from 'ngx-markdown';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +31,8 @@ import { Services } from './services'
     HttpModule,
 
     HeaderModule.forRoot(),
+    MarkdownModule.forRoot(),
+    AceEditorModule,
 
     NgbModule.forRoot(),
     // Put this one last to avoid the 404 route capturing all requests

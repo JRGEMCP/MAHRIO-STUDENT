@@ -1,0 +1,12 @@
+<ul class="section-toggle">
+    <li class="nav-item">
+        <select (change)="setSection($event.target.value)" class="form-control" id="section-change">
+            <option *ngFor="let section of sections; let i = index" [value]="section.id" [selected]="!i">
+                {{section.heading}}
+            </option>
+        </select>
+    </li>
+    <li>
+        <button class="btn btn-success" (click)="saveSections($event);">Save</button>
+    </li>
+</ul>

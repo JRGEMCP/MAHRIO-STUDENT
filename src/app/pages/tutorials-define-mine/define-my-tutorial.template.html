@@ -4,24 +4,39 @@
             <milestone-panel [id]="a._id" active="define"></milestone-panel>
         </div>
         <div class="col-md-4">
-            <h3>Define</h3>
-            <h5>Define Outline</h5>
-            <p>Here you supply sections the outline.</p>
-            <div class="form">
-                <div class="form-group">
-                    <label for="title">Section</label>
-                    <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="a.title">
-                </div>
-                <div class="form-group">
-                    <label for="link">URL Path</label>
-                    <input type="text" class="form-control" id="link" placeholder="URL Path" [(ngModel)]="a.link">
-                </div>
-                <div class="form-group">
-                    <label for="summary">Section Heading</label>
-                    <textarea class="form-control" id="summary" rows="3" placeholder="Summary" [(ngModel)]="a.deck"></textarea>
+            <h3>Plan Objectives</h3>
+            <h5>Use Cases</h5>
+            <p>Supply the use cases required to complete your Tutorial.</p>
+            <div>
+                <div *ngFor="let section of sections">
+                    <div class="offset-btn-left" style="min-width: 100px;">
+                        <i class="fa fa-close" (click)="remove(section)"></i>
+                        <i class="fa fa-edit" (click)="section.edit = 1" *ngIf="!section.edit"></i>
+                        <i class="fa fa-check" (click)="section.edit = 0" *ngIf="section.edit"></i>
+                    </div>
+                    <ng-container *ngIf="!section.edit">
+                        {{section.heading}}
+                    </ng-container>
+                    <input type="text" [(ngModel)]="section.heading" *ngIf="section.edit">
+
                 </div>
             </div>
-            <button class="btn btn-success" (click)="save()">Save</button>
+            <div class="form">
+                <div class="offset-btn-left">
+                    <div class="form-group">
+                        <label for="heading">&nbsp;</label>
+                        <button class="btn btn-primary btn-block" disabled="true">Go To Design</button>
+                    </div>
+                    <button class="btn btn-primary btn-block"  *ngIf="sections.length" (click)="createTutorialSections()">Register</button>
+                </div>
+                <div class="form-group">
+                    <label for="heading">Heading</label>
+                    <input type="text" class="form-control" id="heading"[(ngModel)]="s.heading">
+                </div>
+                <button class="btn btn-success btn-block" (click)="add()" [disabled]="!s.heading.length">Create</button>
+
+
+            </div>
         </div>
     </div>
 </div>

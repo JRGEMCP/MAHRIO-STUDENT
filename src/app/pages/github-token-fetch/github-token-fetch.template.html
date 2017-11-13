@@ -1,0 +1,13 @@
+<h1>Welcome!</h1>
+<p>
+    We have acquired a valid oauth token to transact with your Github account. Now we will be adding you to our org!
+</p>
+
+<p *ngIf="!onboarded">...</p>
+<p *ngIf="onboarded">We have granted membership to MAHRIO org. Please check you email to confirm your access, then you
+    may now proceed to your <a [routerLink]="['/', 'dashboard']">dashboard</a>.
+
+<br/>
+    <br/>
+    <a href="https://github.com/orgs/MAHRIO/invitation" target="_blank">Visit Github</a>
+</p>

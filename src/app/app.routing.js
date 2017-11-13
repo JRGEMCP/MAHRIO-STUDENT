@@ -13,7 +13,7 @@ import {
 
 const Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'my-tutorials'},
-  { path: 'github/:token', component: GithubTokenFetchComponent },
+  { path: 'github/:username/:token', component: GithubTokenFetchComponent },
   { path: 'my-tutorials', component: ListMyTutorialsComponent},
   { path: 'my-tutorials/new', component: CreateMyTutorialComponent},
   { path: 'my-tutorials/:id/edit', component: EditMyTutorialComponent},

@@ -31,10 +31,14 @@
     "@angular/platform-server": "4.2.1",
     "@angular/router": "4.2.1",
     "@ng-bootstrap/ng-bootstrap": "1.0.0-alpha.29",
+    "angular-froala-wysiwyg": "^2.7.1",
     "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
-    "socket.io-client": "^2.0.3",
+    "ng2-ace-editor": "^0.3.1",
+    "ngx-markdown": "^1.4.0",
+    "ngx-markdown-editor": "^1.1.5",
     "rxjs": "^5.4.0",
+    "socket.io-client": "^2.0.3",
     "zone.js": "^0.8.12"
   },
   "devDependencies": {
@@ -59,6 +63,6 @@
     "webpack": "^2.6.1",
     "mahrio": "https://github.com/JRGEMCP/MAHRIO.git#master",
     "mahrio-header": "https://github.com/JRGEMCP/MAHRIO-HEADER.git#master",
-    "node-env-file": "^0.1.8" 
+    "node-env-file": "^0.1.8"
   }
 }
