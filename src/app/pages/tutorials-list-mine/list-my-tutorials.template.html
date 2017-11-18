@@ -1,33 +1,40 @@
-<create-tutorial *ngIf="loaded && !notutorials"></create-tutorial>
+<div class="container mt-3" *ngIf="ready" style="position:relative;">
+    <create-tutorial *ngIf="git && ready && !notutorials"></create-tutorial>
 
-<div class="container mt-3">
-    <div *ngIf="notutorials">
-        <h5>Welcome to your Tutorials!</h5>
-        <p>This is where you'll find the tutorials that you can contribute to...but it looks like you don't have any, yet</p>
-        <a class="btn btn-primary" [routerLink]="['new']">Create your first Tutorial</a>
+    <ng-container *ngIf="git">
+        <div *ngIf="notutorials">
+            <h5>Welcome to your Tutorials!</h5>
+            <p>This is where you'll find the tutorials that you can contribute to...but it looks like you don't have any, yet</p>
+            <a class="btn btn-primary" [routerLink]="['new']">Create your first Tutorial</a>
+
+        </div>
+        <div class="list-group">
+            <ng-container *ngFor="let tutorial of pagingService.page">
+                <div style="position:relative;">
+                    <a class="pl-2 pt-3 star-icon" *ngIf="isLoggedIn" (click)="toggleFavorite(tutorial)">
+                        <i class="fa fa-star" [ngClass]="{'active': tutorial.favorite}"></i>
+                    </a>
+                    <a [routerLink]="[tutorial.id, 'edit']"
+                       class="list-group-item list-group-item-action flex-column align-items-start"
+                       (click)="articlesService.currentArticle = tutorial;" >
+                        <div class="d-flex w-100 justify-content-between" [ngClass]="{'pl-4': isLoggedIn}">
+                            <h5 class="mb-1">{{tutorial.title}}</h5>
+                            <small>{{tutorial.created}}</small>
+                        </div>
+                        <div [ngClass]="{'pl-4': isLoggedIn}">
+                            <p class="mb-1">{{tutorial.deck}}</p>
+                            <small>Donec id elit non mi porta.</small>
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!git">
+        <h3>We NEED TO OAUTH GIT TO PROCEED</h3>
         <a class="btn btn-secondary" href="/api/oauth/github">Authorize Github</a>
-    </div>
-    <div class="list-group">
-        <ng-container *ngFor="let tutorial of pagingService.page">
-            <div style="position:relative;">
-                <a class="pl-2 pt-3 star-icon" *ngIf="isLoggedIn" (click)="toggleFavorite(tutorial)">
-                    <i class="fa fa-star" [ngClass]="{'active': tutorial.favorite}"></i>
-                </a>
-                <a [routerLink]="[tutorial.id, 'edit']"
-                   class="list-group-item list-group-item-action flex-column align-items-start"
-                   (click)="articlesService.currentArticle = tutorial;" >
-                    <div class="d-flex w-100 justify-content-between" [ngClass]="{'pl-4': isLoggedIn}">
-                        <h5 class="mb-1">{{tutorial.title}}</h5>
-                        <small>{{tutorial.created}}</small>
-                    </div>
-                    <div [ngClass]="{'pl-4': isLoggedIn}">
-                        <p class="mb-1">{{tutorial.deck}}</p>
-                        <small>Donec id elit non mi porta.</small>
-                    </div>
-                </a>
-            </div>
-        </ng-container>
-    </div>
+    </ng-container>
+
 </div>
 
 <ng-container *ngIf="pagingService.pages > 1">

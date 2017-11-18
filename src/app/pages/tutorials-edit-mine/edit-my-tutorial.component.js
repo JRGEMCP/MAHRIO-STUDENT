@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'mahrio-header/src/services';
+import { Article } from 'mahrio-header/src/models';
 
 import template from './edit-my-tutorial.template.html';
 
@@ -27,9 +28,17 @@ export class EditMyTutorialComponent {
         .flatMap( token => this.articleService.gett(null, true, this.route.params.value.id) )
         .catch( () => { console.log('catcheeed') })
         .subscribe( res => {
-          this.a = res.articles[0] || {};
+          this.a = Article.fromPayload(res.articles[0]) || {};
           this.articleService.currentArticle = this.a;
          });
+    } else {
+      if( !this.a.sections ) {
+        this.articleService.gett(null, true, this.route.params.value.id).toPromise()
+          .then( res => {
+            this.a = Article.fromPayload(res.articles[0]);
+            this.articleService.currentArticle = Article.fromPayload(res.articles[0]);
+          })
+      }
     }
   }
   ngOnDestroy(){

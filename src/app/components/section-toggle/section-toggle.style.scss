@@ -1,0 +1,11 @@
+.section-toggle {
+  position: absolute;
+  top: -47px;
+  right: 15px;
+  display: inline-flex;
+  list-style: none;
+  z-index: 999;
+  #section-change {
+    min-width: 300px;
+  }
+}

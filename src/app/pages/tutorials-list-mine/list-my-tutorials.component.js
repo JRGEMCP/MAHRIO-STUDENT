@@ -26,6 +26,10 @@ export class ListMyTutorialsComponent {
   }
 
   ngOnInit() {
+    this._subG = this.oauthService.authGit
+      .subscribe( val => { console.log('firedd', val);
+        this.authGit(val);
+      });
     this._subs = this.articlesService.token
       .flatMap( token => this.articlesService.gett(null, true) )
       .catch( () => { console.log('catcheeed') })
@@ -47,6 +51,18 @@ export class ListMyTutorialsComponent {
     if(this._subs) {
       this._subs.unsubscribe();
     }
+    if( this._subG ) { this._subG.unsubscribe(); }
+  }
+
+  authGit( val ){ console.log( val );
+    if( typeof val !== 'undefined' ) {
+      this._git = true;
+    }
+    this.git = val;
+  }
+
+  get ready() {
+    return this.loaded && this._git;
   }
   applyFilters(){
     let apis = [];

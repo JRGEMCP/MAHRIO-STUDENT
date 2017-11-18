@@ -1,0 +1,13 @@
+.fill-editor, .fill-editor-preview {
+  width: 100%;
+  height: calc(100vh - 111px);
+}
+.pane-container-handle {
+
+}
+
+.milestone-pane-container {
+  .milestone-pane {
+    position: absolute; z-index: 999; background: #fafefe; height: calc(100vh - 111px); padding: 20px;
+  }
+}

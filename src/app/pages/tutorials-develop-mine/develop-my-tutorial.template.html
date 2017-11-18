@@ -5,22 +5,12 @@
         </div>
         <div class="col-md-4">
             <h3>Develop</h3>
-            <h5>Tutorial Code</h5>
-            <p>In this section you supply code that represents your Tutorial.</p>
-            <div class="form">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="a.title">
-                </div>
-                <div class="form-group">
-                    <label for="link">URL Path</label>
-                    <input type="text" class="form-control" id="link" placeholder="URL Path" [(ngModel)]="a.link">
-                </div>
-                <div class="form-group">
-                    <label for="summary">Summary</label>
-                    <textarea class="form-control" id="summary" rows="3" placeholder="Summary" [(ngModel)]="a.deck"></textarea>
-                </div>
-            </div>
+            <h5>Complete Code</h5>
+            <p>In this section you supply entire code that represents your Tutorial.</p>
+            <div ace-editor
+                 [(text)]="text" [mode]="'javascript'" [options]="options"
+                [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000"
+                (textChanged)="textChanged($event)" style="min-height: 200px; width:100%; overflow: auto;"></div>
             <button class="btn btn-success" (click)="save()">Save</button>
         </div>
     </div>
