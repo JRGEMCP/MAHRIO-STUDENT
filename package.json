@@ -7,10 +7,11 @@
   },
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run dev",
+    "build": "NODE_ENV='prod' webpack --profile --bail",
     "dev": "NODE_ENV='dev' webpack --watch --profile --bail",
     "prebuild": "npm update",
-    "build": "NODE_ENV='prod' webpack --profile --bail"
+    "start": "npm run dev",
+    "test": "npm run build"
   },
   "license": "MIT",
   "engines": {
