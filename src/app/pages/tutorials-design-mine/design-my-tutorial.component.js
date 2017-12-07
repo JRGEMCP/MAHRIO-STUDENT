@@ -61,7 +61,7 @@ export class DesignMyTutorialComponent {
           this.sections.find(sec => sec.id == this.currentId).body = this.markdown;
           this.articleService.saveSections( this.route.params.value.id, this.sections )
             .then( res => {
-
+              this.a.state = 'DEVELOPING';
             })
         }
     })
@@ -78,12 +78,5 @@ export class DesignMyTutorialComponent {
           .then(res => {});
       }
     }
-  }
-  save(){
-    this.articleService.put(this.a).then( res => {
-      this.router.navigate(['/','dashboard']);
-    }, err => {
-      this.err = true;
-    });
   }
 }

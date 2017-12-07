@@ -1,12 +1,15 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-4">
-            <milestone-panel [id]="a._id" active="discover"></milestone-panel>
+            <milestone-panel [id]="a.id" active="discover" [state]="a.state" [n]="n"></milestone-panel>
         </div>
         <div class="col-md-4">
             <h3>Discover</h3>
             <h5>Tutorial Identification</h5>
             <p>In this section you supply information that identifies and describes your Tutorial.</p>
+
+            <toast *ngIf="alert" [alert]="alert" (reset)="resetAlert()"></toast>
+
             <div class="form">
                 <div class="form-group">
                     <label for="title">Title</label>
@@ -20,10 +23,11 @@
                     <label for="summary">Summary</label>
                     <textarea class="form-control" id="summary" rows="3" placeholder="Summary" [(ngModel)]="a.deck"></textarea>
                 </div>
+
+                <form-tags [tags]="a.tags" (changed)="onTagChanged($event)"></form-tags>
             </div>
-            <button class="btn btn-success" (click)="save(); saving = true;">
-                <ng-container *ngIf="!saving">Save</ng-container>
-                <ng-container *ngIf="saving">Saving</ng-container>
+            <button class="btn btn-primary" (click)="save();">
+                Update
             </button>
         </div>
     </div>

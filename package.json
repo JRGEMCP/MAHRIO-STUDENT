@@ -36,6 +36,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
     "ng2-ace-editor": "^0.3.1",
+    "ng2-toastr": "^4.1.2",
     "ngx-markdown": "^1.4.0",
     "ngx-markdown-editor": "^1.1.5",
     "rxjs": "^5.4.0",

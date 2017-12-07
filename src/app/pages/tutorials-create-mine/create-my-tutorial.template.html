@@ -1,12 +1,15 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-4">
-            <milestone-panel s="1"></milestone-panel>
+            <milestone-panel active="discover" n="0" state="" active="discover"></milestone-panel>
         </div>
         <div class="col-md-4">
             <h3>Discover</h3>
             <h5>Tutorial Identification</h5>
             <p>In this section you supply information that identifies and describes your Tutorial.</p>
+
+            <toast *ngIf="alert" [alert]="alert" (reset)="resetAlert()"></toast>
+
             <div class="form">
                 <div class="form-group">
                     <label for="title">Title</label>

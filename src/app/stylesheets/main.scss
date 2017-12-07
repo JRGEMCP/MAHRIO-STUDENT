@@ -1,2 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
+
+article {
+  img {
+    display: block;
+    margin: 20px auto;
+  }
+}

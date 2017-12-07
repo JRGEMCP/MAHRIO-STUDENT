@@ -1,7 +1,10 @@
 <ul class="section-toggle">
     <li class="nav-item">
+        <a target="_blank" [href]="github" *ngIf="github"><i class="fa fa-github"></i></a>
+    </li>
+    <li class="nav-item">
         <select (change)="setSection($event.target.value)" class="form-control" id="section-change">
-            <option *ngFor="let section of sections; let i = index" [value]="section.id" [selected]="!i">
+            <option *ngFor="let section of sections; let i = index" [value]="section" [selected]="!i">
                 {{section.heading}}
             </option>
         </select>

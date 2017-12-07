@@ -7,7 +7,7 @@ import template from './edit-my-tutorial.template.html';
 
 @Component({
   selector: 'edit-my-tutorial',
-  template,
+  template
 })
 
 export class EditMyTutorialComponent {
@@ -19,6 +19,8 @@ export class EditMyTutorialComponent {
     this.router = router;
     this.articleService = articleService;
     this.a = {};
+    this.alert = null;
+    this.n = 1;
   }
   ngOnInit(){
     this.a = this.articleService.currentArticle;
@@ -31,14 +33,6 @@ export class EditMyTutorialComponent {
           this.a = Article.fromPayload(res.articles[0]) || {};
           this.articleService.currentArticle = this.a;
          });
-    } else {
-      if( !this.a.sections ) {
-        this.articleService.gett(null, true, this.route.params.value.id).toPromise()
-          .then( res => {
-            this.a = Article.fromPayload(res.articles[0]);
-            this.articleService.currentArticle = Article.fromPayload(res.articles[0]);
-          })
-      }
     }
   }
   ngOnDestroy(){
@@ -47,11 +41,18 @@ export class EditMyTutorialComponent {
     }
   }
   save(){
-    console.log( this.a );
     this.articleService.put(this.a).then( res => {
-      this.router.navigate(['/','dashboard']);
+      this.alert = {success: 'Article discovery saved.', dismiss: 3000};
     }, err => {
-      this.err = true;
+      this.alert = {danger: 'Article update failed.'};
     });
+  }
+  resetAlert(){
+    this.alert = null;
+  }
+  onTagChanged( tags ){ console.log(tags);
+    this.articleService.tags( {tags: tags, _id: this.a.id} ).then( res => {
+      console.log(res);
+    })
   }
 }

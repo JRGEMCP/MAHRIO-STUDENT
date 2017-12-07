@@ -23,7 +23,13 @@
                         </div>
                         <div [ngClass]="{'pl-4': isLoggedIn}">
                             <p class="mb-1">{{tutorial.deck}}</p>
-                            <small>Donec id elit non mi porta.</small>
+                            <small>State: {{tutorial.state}}</small>
+                        </div>
+                        <div [ngClass]="{'pl-4': isLoggedIn}" *ngIf="tutorial.tags">
+                            Tags:
+                            <span *ngFor="let tag of tutorial.tags; let i = index" class="badge badge-default ml-1">
+                                {{tag}}
+                            </span>
                         </div>
                     </a>
                 </div>

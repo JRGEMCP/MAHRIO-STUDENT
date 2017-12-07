@@ -1,13 +1,36 @@
 <div class="container mt-3">
     <div class="row">
-        <div class="col-md-4">
-            <milestone-panel [id]="a._id" active="deploy"></milestone-panel>
+        <div class="col-md-3">
+            <milestone-panel [id]="a._id" active="deploy" [state]="a.state"></milestone-panel>
         </div>
-        <div class="col-md-4">
-            <h3>Deploy / Review</h3>
-            <h5>Tutorial Publishing</h5>
-            <p>In this section you supply information that launches your Tutorial.</p>
+        <div class="col-md-9">
+            <article>
+                <h3>Deploy / Review</h3>
+                <h5>Tutorial Publishing</h5>
+                <p>In this section you supply information that launches your Tutorial.</p>
 
+                <hr/>
+                <h1>{{a.title}}</h1>
+                <p>{{a.deck}}</p>
+                <p>{{a.created}} | {{a.creator}}</p>
+
+                <section *ngFor="let section of tutorial.sections">
+                    <h2>{{section.heading}}</h2>
+                    <markdown [data]="section.body" class="fill-editor-preview" *ngFor="let section of a.sections"></markdown>
+                </section>
+
+                <div ace-editor
+                     [(text)]="a.code.cache" [mode]="'javascript'" [options]="options"
+                     [readOnly]="true" [autoUpdateContent]="true" [durationBeforeCallback]="1000"
+                     (textChanged)="textChanged($event)"
+                     style="min-height: 400px; width:100%; overflow: auto;"></div>
+            </article>
+
+            <div class="mt-5 mb-5">
+                <button class="btn btn-success btn-block" (click)="publish()">
+                    PUBLISH
+                </button>
+            </div>
         </div>
     </div>
 </div>
