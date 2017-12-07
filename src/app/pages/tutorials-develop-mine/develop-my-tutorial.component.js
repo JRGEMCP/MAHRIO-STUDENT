@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'mahrio-header/src/services';
+import { Article } from 'mahrio-header/src/models';
 
 import template from './develop-my-tutorial.template.html';
 
 @Component({
   selector: 'develop-my-tutorial',
-  template
+  template,
+  styles: [ ]
 })
 
 export class DevelopMyTutorialComponent {
@@ -18,6 +20,7 @@ export class DevelopMyTutorialComponent {
     this.router = router;
     this.articleService = articleService;
     this.a = {};
+    this.n = 4;
   }
   ngOnInit(){
     this.a = this.articleService.currentArticle;
@@ -27,13 +30,40 @@ export class DevelopMyTutorialComponent {
         .flatMap( token => this.articleService.gett(null, true, this.route.params.value.id) )
         .catch( () => { console.log('catcheeed') })
         .subscribe( res => {
-          this.a = res.articles[0] || {};
+          this.a = Article.fromPayload(res.articles[0]) || {};
           this.articleService.currentArticle = this.a;
+          this.trySave();
         });
+    } else {
+      this.trySave();
     }
   }
 
   textChanged(){
     console.log('saving');
+  }
+
+  trySave(){
+    if( !this.a.code || !this.a.code.git ) {
+      // message to wait
+      this.articleService.createCodeRepo(this.a.id)
+        .then( (res) => { console.log('sha', res)}); // create code.git
+    } else {
+      this.text = this.a.code.cache;
+      this.articleService.getCodeSha(this.a.id)
+        .then( (res) => {
+          this.sha = res.sha;
+        })
+    }
+  }
+  update(){
+    this.articleService.updateCodeRepo(this.a.id, 'saving', this.sha, this.text)
+      .then( (res) => {
+        this.a.state = 'DEPLOYED';
+        this.articleService.getCodeSha(this.a.id)
+          .then( (res) => {
+            this.sha = res.sha;
+          })
+      })
   }
 }

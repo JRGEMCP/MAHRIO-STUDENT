@@ -1,6 +1,10 @@
 .fill-editor, .fill-editor-preview {
   width: 100%;
   height: calc(100vh - 111px);
+
+  img {
+    max-width: 100%;
+  }
 }
 .pane-container-handle {
 

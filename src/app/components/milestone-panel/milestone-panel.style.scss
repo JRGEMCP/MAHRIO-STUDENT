@@ -5,4 +5,9 @@ ul {
     cursor: default;
     font-weight: bold;
   }
+  .dis {
+    pointer-events: none;
+    cursor: default;
+    opacity: .7;
+  }
 }

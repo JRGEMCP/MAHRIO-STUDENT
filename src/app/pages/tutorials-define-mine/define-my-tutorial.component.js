@@ -25,6 +25,7 @@ export class DefineMyTutorialComponent {
     this.a = new Article();
     this.s = new Section();
     this.sections = [];
+    this.alert = null;
   }
   ngOnInit(){
     this.a = this.articleService.currentArticle;
@@ -40,31 +41,38 @@ export class DefineMyTutorialComponent {
           this.createTutorialRepo(this.a);
         });
     } else {
-      this.createTutorialRepo(this.a);
       this.sections = this.a.sections;
+      this.createTutorialRepo(this.a);
     }
   }
   createTutorialRepo(article){
     if( !article.repo ) {
       this.articleService.createRepo(article.id, article.title, article.deck).then(res => {
         this.articleService.currentArticle.repo = res.article.repo;
-      }).catch(err => { });
+        this.alert = {success: 'Article\'s github repo created.', dismiss: 3000};
+      }).catch(err => {
+        this.alert = {danger: 'Article\'s github repo create failed.'};
+      });
     }
   }
 
   add(){
-    this.sections.push( this.s );
-    this.s = new Section();
+    this.articleService.createSection( this.a.id, {heading: this.s.heading})
+      .then( res => {
+        this.s.id = res.section._id;
+        this.sections.push( this.s );
+        this.articleService.currentArticle.sections = this.sections;
+        this.alert = {success: 'Section `'+this.s.heading+'` created.', dismiss: 3000};
+        this.s = new Section();
+    })
   }
-  remove( sec ) { console.log(sec);
-    if( sec.id ) {
-      this.articleService.removeSection( this.a.id, sec.id )
-        .then( res => {
-          this.sections = this.sections.filter( s => s.id !== sec.id );
-        })
-    } else {
-      this.sections = this.sections.filter( s => s.time !== sec.time );
-    }
+  remove( sec ) {
+    this.articleService.removeSection( this.a.id, sec.id )
+      .then( res => {
+        this.sections = this.sections.filter( s => s.id !== sec.id );
+        this.articleService.currentArticle.sections = this.sections;
+        this.alert = {success: 'Section `'+sec.heading+'` removed.', dismiss: 3000};
+      })
   }
 
   createTutorialSections(){
@@ -80,5 +88,9 @@ export class DefineMyTutorialComponent {
       this.articleService.updateSections( this.a.id, updateSections.map( sec => { return {id: sec.id, heading: sec.heading}; }) )
         .then( res => {})
     }
+  }
+
+  resetAlert(){
+    this.alert = null;
   }
 }

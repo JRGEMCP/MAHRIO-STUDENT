@@ -8,6 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 import { HeaderModule } from 'mahrio-header/src/header.module';
 
@@ -15,7 +19,9 @@ import { AppRoutingModule } from './app.routing.js';
 import { MainPage } from './main/main.page';
 import { Pages} from './pages';
 import { Components } from './components';
-import { Services } from './services'
+import { Services } from './services';
+
+
 
 @NgModule({
   declarations: [
@@ -30,11 +36,13 @@ import { Services } from './services'
     ReactiveFormsModule,
     HttpModule,
 
+    BrowserAnimationsModule,
     HeaderModule.forRoot(),
     MarkdownModule.forRoot(),
     AceEditorModule,
 
     NgbModule.forRoot(),
+    ToastModule.forRoot(),
     // Put this one last to avoid the 404 route capturing all requests
     AppRoutingModule,
   ],

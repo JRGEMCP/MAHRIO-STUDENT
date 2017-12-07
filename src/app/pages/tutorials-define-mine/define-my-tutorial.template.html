@@ -1,12 +1,17 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-4">
-            <milestone-panel [id]="a._id" active="define"></milestone-panel>
+            <milestone-panel [id]="a._id" active="define" [state]="a.sections.length ? 'DESIGNING': a.state" [n]="n"></milestone-panel>
         </div>
         <div class="col-md-4">
-            <h3>Plan Objectives</h3>
+            <h3>Plan Objectives
+                <a target="_blank" [href]="a.repo" *ngIf="a.repo"><i class="fa fa-github"></i></a>
+            </h3>
             <h5>Use Cases</h5>
             <p>Supply the use cases required to complete your Tutorial.</p>
+
+            <toast *ngIf="alert" [alert]="alert" (reset)="resetAlert()"></toast>
+
             <div>
                 <div *ngFor="let section of sections">
                     <div class="offset-btn-left" style="min-width: 100px;">
@@ -22,15 +27,8 @@
                 </div>
             </div>
             <div class="form">
-                <div class="offset-btn-left">
-                    <div class="form-group">
-                        <label for="heading">&nbsp;</label>
-                        <button class="btn btn-primary btn-block" disabled="true">Go To Design</button>
-                    </div>
-                    <button class="btn btn-primary btn-block"  *ngIf="sections.length" (click)="createTutorialSections()">Register</button>
-                </div>
                 <div class="form-group">
-                    <label for="heading">Heading</label>
+                    <label for="heading">Section Heading</label>
                     <input type="text" class="form-control" id="heading"[(ngModel)]="s.heading">
                 </div>
                 <button class="btn btn-success btn-block" (click)="add()" [disabled]="!s.heading.length">Create</button>

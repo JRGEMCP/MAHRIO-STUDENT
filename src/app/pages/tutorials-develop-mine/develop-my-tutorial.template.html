@@ -1,17 +1,21 @@
 <div class="container mt-3">
     <div class="row">
-        <div class="col-md-4">
-            <milestone-panel [id]="a._id" active="develop"></milestone-panel>
+        <div class="col-md-3">
+            <milestone-panel [id]="a.id" active="develop" [state]="a.state" [n]="n"></milestone-panel>
         </div>
-        <div class="col-md-4">
-            <h3>Develop</h3>
+        <div class="col-md-7">
+            <h3>Develop <a target="_blank" [href]="a.repo + '/blob/master/Code.js'" *ngIf="a.repo"><i class="fa fa-github"></i></a></h3>
             <h5>Complete Code</h5>
             <p>In this section you supply entire code that represents your Tutorial.</p>
-            <div ace-editor
-                 [(text)]="text" [mode]="'javascript'" [options]="options"
-                [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000"
-                (textChanged)="textChanged($event)" style="min-height: 200px; width:100%; overflow: auto;"></div>
-            <button class="btn btn-success" (click)="save()">Save</button>
+            <div class="mb-4">
+                <div ace-editor
+                     [(text)]="text" [mode]="'javascript'" [options]="options"
+                     [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="1000"
+                     (textChanged)="textChanged($event)"
+                     style="min-height: 400px; width:100%; overflow: auto;"></div>
+            </div>
+
+            <button class="pull-right btn btn-success" (click)="update()">Save</button>
         </div>
     </div>
 </div>

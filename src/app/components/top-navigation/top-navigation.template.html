@@ -22,5 +22,5 @@
     </div>
 </div>
 <div class="media-library" [ngbCollapse]="!showMedia">
-    <mahrio-media></mahrio-media><h1>TE</h1>
+    <mahrio-media (copyEvent)="showMedia=false"></mahrio-media>
 </div>
