@@ -30,12 +30,13 @@ export class SectionToggleComponent {
         this.github = 'https://github.com/MAHRIO/'+this.id+'/blob/master/'+this.sections[0].url+'.md';
       });
   }
-  setSection( val ) { console.log( val );
-    this.navService.section = val.id;
-    this.github = 'https://github.com/MAHRIO/'+this.id+'/blob/master/'+val.url+'.md';
+  setSection( id ) {
+    let section = this.sections.find(sec => sec.id == id);
+    this.navService.section = section;
+    this.github = 'https://github.com/MAHRIO/'+section.id+'/blob/master/'+section.url+'.md';
   }
 
-  saveSections(){ console.log('here');
+  saveSections(){
     this.navService.save = true;
   }
 }

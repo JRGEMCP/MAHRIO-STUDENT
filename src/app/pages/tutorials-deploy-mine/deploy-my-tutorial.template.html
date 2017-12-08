@@ -14,7 +14,7 @@
                 <p>{{a.deck}}</p>
                 <p>{{a.created}} | {{a.creator}}</p>
 
-                <section *ngFor="let section of tutorial.sections">
+                <section *ngFor="let section of a.sections">
                     <h2>{{section.heading}}</h2>
                     <markdown [data]="section.body" class="fill-editor-preview" *ngFor="let section of a.sections"></markdown>
                 </section>

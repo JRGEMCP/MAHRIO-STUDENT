@@ -48,10 +48,9 @@ export class DesignMyTutorialComponent {
 
     this.navService.section
       .subscribe( section => {
-        console.log( section );
         this.sections.find(sec => sec.id == this.currentId).body = this.markdown;
-        this.markdown = this.sections.find( sec => sec.id == section ).body;
-        this.currentId = section;
+        this.markdown = this.sections.find( sec => sec.id == section.id ).body;
+        this.currentId = section.id;
         console.log('sections', this.sections);
     });
 
