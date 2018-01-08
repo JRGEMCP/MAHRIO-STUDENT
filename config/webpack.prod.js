@@ -11,8 +11,6 @@ module.exports = {
     'main':  './src/main.prod.js'
   },
 
-  devtool: 'source-map',
-
   output: {
     path: helpers.root('dist'),
     publicPath: 'assets/',
