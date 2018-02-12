@@ -16,7 +16,7 @@
 
                 <section *ngFor="let section of a.sections">
                     <h2>{{section.heading}}</h2>
-                    <markdown [data]="section.body" class="fill-editor-preview" *ngFor="let section of a.sections"></markdown>
+                    <markdown [data]="section.body" class="fill-editor-preview"></markdown>
                 </section>
 
                 <div ace-editor

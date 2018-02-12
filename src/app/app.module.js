@@ -1,3 +1,5 @@
+import 'prismjs';
+
 import { AceEditorModule } from 'ng2-ace-editor';
 
 import { MarkdownModule } from 'ngx-markdown';
@@ -10,8 +12,6 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-
 
 import { HeaderModule } from 'mahrio-header/src/header.module';
 
