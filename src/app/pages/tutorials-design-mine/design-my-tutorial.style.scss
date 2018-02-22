@@ -15,3 +15,9 @@
     position: absolute; z-index: 999; background: #fafefe; height: calc(100vh - 111px); padding: 20px;
   }
 }
+
+.markdown-preview {
+  img {
+    max-width: 100%;
+  }
+}

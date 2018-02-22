@@ -10,9 +10,10 @@
                 <p>In this section you supply information that launches your Tutorial.</p>
 
                 <hr/>
-                <h1>{{a.title}}</h1>
-                <p>{{a.deck}}</p>
-                <p>{{a.created}} | {{a.creator}}</p>
+                <div class="text-center">
+                    <h1>{{a.title}}</h1>
+                    <p class="lead">{{a.deck}}</p>
+                </div>
 
                 <section *ngFor="let section of a.sections">
                     <h2>{{section.heading}}</h2>

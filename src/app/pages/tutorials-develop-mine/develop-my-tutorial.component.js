@@ -47,7 +47,10 @@ export class DevelopMyTutorialComponent {
     if( !this.a.code || !this.a.code.git ) {
       // message to wait
       this.articleService.createCodeRepo(this.a.id)
-        .then( (res) => { console.log('sha', res)}); // create code.git
+        .then( (res) => {
+
+          this.alert = {success: 'Code Saved!', dismiss: 3000};
+        }); // create code.git
     } else {
       this.text = this.a.code.cache;
       this.articleService.getCodeSha(this.a.id)
@@ -60,10 +63,15 @@ export class DevelopMyTutorialComponent {
     this.articleService.updateCodeRepo(this.a.id, 'saving', this.sha, this.text)
       .then( (res) => {
         this.a.state = 'DEPLOYED';
+        this.articleService.currentArticle.code.cache = this.text;
         this.articleService.getCodeSha(this.a.id)
           .then( (res) => {
             this.sha = res.sha;
+            this.alert = {success: 'Code Saved!', dismiss: 3000};
           })
       })
+  }
+  resetAlert(){
+    this.alert = null;
   }
 }

@@ -8,6 +8,7 @@
             <h3>Develop <a target="_blank" [href]="a.repo + '/blob/master/Code.js'" *ngIf="a.repo"><i class="fa fa-github"></i></a></h3>
             <h5>Complete Code</h5>
             <p>In this section you supply entire code that represents your Tutorial.</p>
+            <toast *ngIf="alert" [alert]="alert" (reset)="resetAlert()"></toast>
             <div class="mb-4">
                 <div ace-editor
                      [(text)]="text" [mode]="'javascript'" [options]="options"

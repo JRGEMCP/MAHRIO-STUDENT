@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, SectionService } from 'mahrio-header/src/services';
 import { Article, Section } from 'mahrio-header/src/models';
@@ -10,7 +10,8 @@ import style from './design-my-tutorial.style.scss';
 @Component({
   selector: 'design-my-tutorial',
   template,
-  styles: [style]
+  styles: [style],
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class DesignMyTutorialComponent {

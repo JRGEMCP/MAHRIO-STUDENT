@@ -17,7 +17,7 @@
                     <div class="offset-btn-left" style="min-width: 100px;">
                         <i class="fa fa-close" (click)="remove(section)"></i>
                         <i class="fa fa-edit" (click)="section.edit = 1" *ngIf="!section.edit"></i>
-                        <i class="fa fa-check" (click)="section.edit = 0" *ngIf="section.edit"></i>
+                        <i class="fa fa-check" (click)="save(section);" *ngIf="section.edit"></i>
                     </div>
                     <ng-container *ngIf="!section.edit">
                         {{section.heading}}

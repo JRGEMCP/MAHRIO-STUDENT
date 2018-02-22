@@ -90,6 +90,14 @@ export class DefineMyTutorialComponent {
     }
   }
 
+  save( section ){
+    this.articleService.updateSection( this.a.id, section)
+      .then( (res) => {
+        this.alert = {success: 'Section `'+section.heading+'` updated.', dismiss: 3000};
+        section.edit = 0
+      });
+  }
+
   resetAlert(){
     this.alert = null;
   }
