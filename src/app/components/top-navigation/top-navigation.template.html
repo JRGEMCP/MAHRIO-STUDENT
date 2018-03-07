@@ -14,13 +14,7 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['my-tutorials']">My Tutorials</a>
                 </li>
-                <li class="nav-item">
-                    <button class="btn btn-info" (click)="showMedia = !showMedia">Media</button>
-                </li>
             </ul>
         </div>
     </div>
-</div>
-<div class="media-library" [ngbCollapse]="!showMedia">
-    <mahrio-media (copyEvent)="showMedia=false"></mahrio-media>
 </div>

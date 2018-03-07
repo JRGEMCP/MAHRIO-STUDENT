@@ -18,12 +18,11 @@
                        class="list-group-item list-group-item-action flex-column align-items-start"
                        (click)="articlesService.currentArticle = tutorial;" >
                         <div class="d-flex w-100 justify-content-between" [ngClass]="{'pl-4': isLoggedIn}">
-                            <h5 class="mb-1">{{tutorial.title}}</h5>
+                            <h5 class="mb-1">{{tutorial.title}} <span>({{tutorial.state}})</span></h5>
                             <small>{{tutorial.created | date: 'MM/dd/yyyy'}}</small>
                         </div>
                         <div [ngClass]="{'pl-4': isLoggedIn}">
                             <p class="mb-1">{{tutorial.deck}}</p>
-                            <small>State: {{tutorial.state}}</small>
                         </div>
                         <div [ngClass]="{'pl-4': isLoggedIn}" *ngIf="tutorial.tags">
                             <span *ngFor="let tag of tutorial.tags; let i = index" class="badge badge-default ml-1">
