@@ -1,10 +1,10 @@
 <div>
     <h5>Milestone Panel</h5>
     <ul class="list-group pl-2">
-        <li><a [routerLink]="['/my-tutorials', id, 'edit']" [class.disabled]="active=='discover'">Discover</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'define']" [ngClass]="{dis: n<0 || !id}" [class.disabled]="active=='define'">Define</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'design']" [ngClass]="{dis: n<2 || !id}" [class.disabled]="active=='design'">Design</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'develop']" [ngClass]="{dis: n<3 || !id}" [class.disabled]="active=='develop'">Develop</a></li>
-        <li><a [routerLink]="['/my-tutorials', id, 'deploy']" [ngClass]="{dis: n<3 || !id}" [class.disabled]="active=='deploy'">Deploy</a></li>
+        <li><a [routerLink]="['/dashboard', 'my-tutorials', id, 'edit']" [class.disabled]="active=='discover'">Discover</a></li>
+        <li><a [routerLink]="['/dashboard', 'my-tutorials', id, 'define']" [ngClass]="{dis: n<0 || !id}" [class.disabled]="active=='define'">Define</a></li>
+        <li><a [routerLink]="['/dashboard', 'my-tutorials', id, 'design']" [ngClass]="{dis: n<2 || !id}" [class.disabled]="active=='design'">Design</a></li>
+        <li><a [routerLink]="['/dashboard', 'my-tutorials', id, 'develop']" [ngClass]="{dis: n<3 || !id}" [class.disabled]="active=='develop'">Develop</a></li>
+        <li><a [routerLink]="['/dashboard', 'my-tutorials', id, 'deploy']" [ngClass]="{dis: n<3 || !id}" [class.disabled]="active=='deploy'">Deploy</a></li>
     </ul>
 </div>

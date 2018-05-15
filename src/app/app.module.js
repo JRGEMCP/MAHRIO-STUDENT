@@ -9,7 +9,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CollapseModule } from 'ngx-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -41,7 +42,7 @@ import { Services } from './services';
     MarkdownModule.forRoot(),
     AceEditorModule,
 
-    NgbModule.forRoot(),
+    CollapseModule.forRoot(),
     ToastModule.forRoot(),
     // Put this one last to avoid the 404 route capturing all requests
     AppRoutingModule,
@@ -53,4 +54,4 @@ import { Services } from './services';
     MainPage
   ]
 })
-export class AppModule { }
+export class StudentModule { }

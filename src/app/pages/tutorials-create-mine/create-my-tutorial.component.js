@@ -28,7 +28,7 @@ export class CreateMyTutorialComponent {
       this.n = 2;
       setTimeout( () => {
         this.articleService.currentArticle = Article.fromPayload(res.article);
-        this.router.navigate(['/', 'my-tutorials', res.article._id, 'edit']);
+        this.router.navigate(['/', 'dashboard', 'my-tutorials', res.article._id, 'edit']);
       }, 3000);
     }, err => {
       this.err = true;
